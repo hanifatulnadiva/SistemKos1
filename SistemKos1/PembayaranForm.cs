@@ -22,7 +22,7 @@ namespace SistemKos1
             cmbMetodePembayaran.Items.AddRange(new string[] { "Tunai", "Transfer" });
 
             numJumlah.Maximum = 1000000000;
-            numJumlah.Minimum = 0;
+            numJumlah.Minimum = 500000;
         }
 
         private void LoadNIKs()

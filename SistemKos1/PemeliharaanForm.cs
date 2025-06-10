@@ -218,6 +218,8 @@ namespace SistemKos1
         {
             LoadComboBoxKamar();
             LoadData();
+            dtpTanggal.MinDate = new DateTime(DateTime.Now.Year, 1, 1);
+            dtpTanggal.MaxDate = DateTime.Now.AddYears(1);
         }
 
         private void AnalyzeQuery(string sqlQuery)

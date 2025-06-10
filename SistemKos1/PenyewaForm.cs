@@ -218,7 +218,7 @@ namespace SistemKos1
                     using (SqlCommand cmd = new SqlCommand("AddPenyewa", conn))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
-
+                        cmd.Transaction = transaction;
                         cmd.Parameters.AddWithValue("@NIK", txtNIK.Text.Trim());
                         cmd.Parameters.AddWithValue("@nama", txtNama.Text.Trim());
                         cmd.Parameters.AddWithValue("@kontak", txtKontak.Text.Trim());
