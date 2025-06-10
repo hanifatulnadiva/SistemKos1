@@ -7,7 +7,7 @@ namespace SistemKos1
 {
     public partial class PembayaranForm : Form
     {
-        string connectionString = "Server=HANIFATUL-NADIV\\HANIFA; Database=SistemManagementKost;Trusted_Connection=True;";
+        private string connectionString = "Server=HANIFATUL-NADIV\\HANIFA;Database=SistemManagementKost;Trusted_Connection=True;";
 
 
         public PembayaranForm()
@@ -22,7 +22,7 @@ namespace SistemKos1
             cmbMetodePembayaran.Items.AddRange(new string[] { "Tunai", "Transfer" });
 
             numJumlah.Maximum = 1000000000;
-            numJumlah.Minimum = 500000;
+            numJumlah.Minimum = 0;
         }
 
         private void LoadNIKs()
@@ -89,7 +89,6 @@ namespace SistemKos1
                     tran.Commit();
                     MessageBox.Show("Data pembayaran berhasil disimpan.");
                     LoadData();
-                    ClearForm();
                 }
                 catch (Exception ex)
                 {
@@ -131,7 +130,6 @@ namespace SistemKos1
                     tran.Commit();
                     MessageBox.Show("Data pembayaran berhasil diperbarui.");
                     LoadData();
-                    ClearForm();
                 }
                 catch (Exception ex)
                 {
@@ -167,7 +165,6 @@ namespace SistemKos1
                     tran.Commit();
                     MessageBox.Show("Data pembayaran berhasil dihapus.");
                     LoadData();
-                    ClearForm();
                 }
                 catch (Exception ex)
                 {
@@ -201,8 +198,6 @@ namespace SistemKos1
                 cmbMetodePembayaran.SelectedItem = row.Cells["metode_pembayaran"].Value.ToString();
             }
         }
-
-
 
         private void BtnAnalyze_Click(object sender, EventArgs e)
         {
@@ -244,14 +239,13 @@ namespace SistemKos1
         }
 
 
-
         private void ClearForm()
         {
             txtIdPembayaran.Clear();
             cmbNIK.SelectedIndex = -1;
-            numJumlah.Value = 0;
-            cmbMetodePembayaran.SelectedIndex = -1;
             dtpTanggalPembayaran.Value = DateTime.Today;
+            numJumlah.Value = numJumlah.Minimum;
+            cmbMetodePembayaran.SelectedIndex = -1;
         }
 
 

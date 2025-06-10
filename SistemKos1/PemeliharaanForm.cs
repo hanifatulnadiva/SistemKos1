@@ -98,6 +98,7 @@ namespace SistemKos1
                     cache.Remove(cacheKey);
                     MessageBox.Show("Data pemeliharaan berhasil disimpan.");
                     LoadData();
+                    ClearForm();
                 }
                 catch (Exception ex)
                 {
@@ -135,6 +136,7 @@ namespace SistemKos1
                     cache.Remove(cacheKey);
                     MessageBox.Show("Data pemeliharaan berhasil diperbarui.");
                     LoadData();
+                    ClearForm();
                 }
                 catch (Exception ex)
                 {
@@ -169,6 +171,7 @@ namespace SistemKos1
                     cache.Remove(cacheKey);
                     MessageBox.Show("Data pemeliharaan berhasil dihapus.");
                     LoadData();
+                    ClearForm();
                 }
             }
             catch (Exception ex)
@@ -216,6 +219,7 @@ namespace SistemKos1
 
         private void PemeliharaanForm_Load(object sender, EventArgs e)
         {
+            ClearForm();
             LoadComboBoxKamar();
             LoadData();
             dtpTanggal.MinDate = new DateTime(DateTime.Now.Year, 1, 1);
@@ -269,6 +273,15 @@ namespace SistemKos1
     ";
 
             AnalyzeQuery(heavyQuery);
+        }
+
+        private void ClearForm()
+        {
+            txtIdPemeliharaan.Clear();
+            cmbIdKamar.SelectedIndex = -1;
+            txtDeskripsi.Clear();
+            dtpTanggal.Value = DateTime.Now;
+            numBiaya.Value = numBiaya.Minimum; // atau bisa juga di-set ke 0
         }
 
     }
